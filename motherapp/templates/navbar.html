@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<!-- Bootstrap CSS -->
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+
+
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'assets/css/style.css'%}">
+
+{% block title %}<title>Jeremy Foundation</title>{% endblock %}
+
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="{% static 'assets/img/favicon.jpg' %}" rel="">
+  <link href="{% static 'assets/img/favicon.jpg' %}" rel="">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Roboto:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="{% static 'assets/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/icofont/icofont.min.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/boxicons/css/boxicons.min.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/owl.carousel/assets/owl.carousel.min.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/venobox/venobox.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/aos/aos.css' %}" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  {% load static %}
+    <link href="{% static 'assets/css/style.css' %}" rel="stylesheet">
+    
+
+</head>
+
+<body>
+
+  <!-- ======= Top Bar ======= -->
+  <div id="topbar" class="d-none d-lg-flex align-items-center fixed-top bg-success">
+    <div class="container d-flex">
+      <div class="contact-info mr-auto">
+        <i class="icofont-envelope"></i> <a href="mailto:contact@michij247com">contact@example.com</a>
+        <i class="icofont-phone"></i> +243 123456789, +234 123456789
+      </div>
+      <div class="social-links">
+        <a href="#" class="twitter"><i class="icofont-twitter"></i></a>
+        <a href="#" class="facebook"><i class="icofont-facebook"></i></a>
+        <a href="#" class="instagram"><i class="icofont-instagram"></i></a>
+        <a href="#" class="skype"><i class="icofont-skype"></i></a>
+        <a href="#" class="linkedin"><i class="fa fa-whatsapp"></i></i></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="fixed-top">
+    <div class="container d-flex align-items-center">
+        <div class="col">
+      <h1 class="logo mr-auto w3-hide-small"><a href="{% url 'main:home' %}">Jeremy Foundation
+	  <a href="" class="logo mr-auto"><img src="" alt=""></a></a></h1>
+      <!-- Edit above code if you prefer to use an image logo -->
+      </div>
+
+	<div class="col d-flex justify-content-center">
+          <form class="d-flex mr-2 w3-hide-small" action="{% url 'main:search' %}" method="get">
+                <input class="form-control bg-dark w3-large text-white" name="q" class=" fa fa-search" type="text" placeholder="Search for Status" aria-label="Search"
+                style="width:220px; height:40px; border-radius:30px;">
+                 <button class="btn btn-success my-sm-0" style="background-color:; width:70px; height:40px; border-radius:30px;" type="submit">
+                 <i class="fa fa-search w3-xlarge"></i></button>
+              </form>
+	  </div>
+      <div class="col">
+         <nav class="nav-menu d-none d-lg-block">
+            <ul class="w3-large">
+          <li class="active"><a href="{% url 'main:home' %}" style="color: green;">Home</a></li>
+          <!--<li><a href="{% url 'main:dashboard' %}" style="color: green;">Dashboard</a></li>-->
+          <!--<li><a href="{% url 'main:leadparty' %}" style="color: green;">Lead Party</a></li>-->
+          <li class="drop-down"><a href="" style="color: green;">Account</a>
+            <ul>
+			<button type="button" class="btn btn-outline-white text-red mr-2">
+			{% if user.is_authenticated %}
+			<i class="fa fa-user"></i>
+			Hello, {{ user.get_username }}</b>
+            <li><a href="{% url 'logout' %}?next={{request.path}}" style="text-decoration:none"><b class="ml-2" style="color:black; text-decoration:none; margin:0px;">Log Out</b></a>
+			{% else %}
+			<a href="{% url 'login' %}" style="text-decoration:none; color:black">
+			<b class="w3-text-black">Login</b>
+			</a>
+			{% endif %}
+			</button>
+			<div class="d-flex">
+			{% if user.is_authenticated %}
+			{% else %}
+			<button type="button" class="btn btn"  style="text-decoration:none;">
+			<a href="{% url 'main:register' %}" style="text-decoration:none">
+			<b class="text-black">Sign Up</b>
+			</a> </button>
+			{% endif %}</li>
+
+            </ul>
+          </li>
+         <li><a href=""><i class="fa fa-bell text-danger w3-xlarge"></i></a></li>
+        </ul>
+     </nav>
+     </div><!-- .nav-menu -->
+</div>
+ </header>
+	
+ <!-- End Header -->
+
+  
+
+
+
+<!-- Page content goes here -->
+  <div class="col-sm-12" style="min-height:340px;">{% block content %}
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="">
+
+   {% endblock %}</div>
+    
+
+ <!-- ======= Footer ======= -->
+  <footer id="footer">
+
+    <div class="footer-newsletter">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-6">
+            <h4>Join Our Newsletter</h4>
+            <p>Sign up to our weekly great deal offers</p>
+            <div class="col d-flex justify-content-center">
+                <form class="d-flex mr-2" action="" method="get">
+                  <input class="form-control bg-dark w3-large text-white" name="q" class=" fa fa-search" type="text" placeholder="Subscribe to Weekly Updates" aria-label="Search"
+                  style="width:220px; height:40px; border-radius:30px;">
+                   <button class="btn btn-success my-sm-0" style="background-color:; width:90px; height:40px;
+                   border-radius:30px;" type="submit"><i class="">Subscribe</i></button>
+                </form>
+                </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-top">
+      <div class="container">
+        <div class="row">
+
+          <div class="col-lg-3 col-md-6 footer-contact">
+            <h3>Jeremy Foundation</h3>
+            <p>
+              Plot 14<br>
+              Apapa Oshodi<br>
+              Lagos <br><br>
+              <strong>Phone:</strong> +234 708876543<br>
+              <strong>Email:</strong> contact@example.com<br>
+            </p>
+          </div>
+
+          <div class="col-lg-3 col-md-6 footer-links">
+            <h4>Useful Links</h4>
+            <ul>
+             <li><i class="bx bx-chevron-right"></i> <a href="#">Services</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="">Terms of service</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="">Privacy policy</a></li>
+            </ul>
+          </div>
+
+
+          <div class="col-lg-3 col-md-6 footer-links">
+            <h4>Our Social Networks</h4>
+            <p>Visit our social media platforms for special deals and give aways</p>
+            <div class="social-links mt-3">
+              <a href="#" class="twitter bg-success"><i class="bx bxl-twitter"></i></a>
+              <a href="#" class="facebook bg-success"><i class="bx bxl-facebook"></i></a>
+              <a href="#" class="instagram bg-success"><i class="bx bxl-instagram"></i></a>
+              <a href="#" class="google-plus bg-success"><i class="bx bxl-skype"></i></a>
+              <a href="#" class="linkedin bg-success"><i class="bx bxl-linkedin"></i></a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="container py-4">
+      <div class="copyright">
+        &copy; Copyright <strong><span>Jeremy Foundation</span></strong>. All Rights Reserved
+      </div>
+      <div class="credits">
+        <a href="#"></a>
+      </div>
+
+
+
+    </div>
+	<!-- Message Modal Section -->
+
+
+
+    </div>
+  </div>
+  </footer><!-- End Footer -->
+
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+<script type="text/javascript" src="slick/slick.min.js"></script>
+
+
+  <!-- Vendor JS Files -->
+  <script src="{% static 'assets/vendor/jquery/jquery.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/jquery.easing/jquery.easing.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/php-email-form/validate.js' %}"></script>
+  <script src="{% static 'assets/vendor/waypoints/jquery.waypoints.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/counterup/counterup.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/owl.carousel/owl.carousel.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/isotope-layout/isotope.pkgd.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/venobox/venobox.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/aos/aos.js' %}"></script>
+
+  <!-- Template Main JS File -->
+  <script src="{% static 'assets/js/main.js' %}">
+  
+  </script>
+  
+
+</body>
+
+</html>

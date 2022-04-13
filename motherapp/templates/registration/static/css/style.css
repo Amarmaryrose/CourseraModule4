@@ -1,0 +1,24 @@
+/** CSS Code **/
+.topbar-nav{
+  margin-top: 20px;
+  padding: 15px;
+  list-style: none;
+}
+
+.main-footer{
+  background-color: black;
+}
+
+.topnav{
+  list-style:none;
+}
+
+br{
+  color: black
+}
+#loginpage{
+  background: white url("static\css\images\wiseviewhome.png")
+}
+body {
+   background: white url ("static\css\images\logo.png") no-repeat;
+}

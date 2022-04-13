@@ -1,0 +1,63 @@
+{% extends 'navbar.html' %}
+{% block content %}
+
+<hr class="mt-5">
+                  <div class="row py-5 d-flex justify-content-center h-100" data-aos="zoom-in" data-aos-delay="100">
+
+                    <div class="alert alert-white ml-4" role="alert">
+                      <div class="d-flex justify-content-center h-100">
+                   <div class="col-sm-12 col-ml-12 col-lg-12 py-3 ml-auto bg-white" style="border-radius:10px;">
+
+                  <form method="post"  action="{% url 'login' %}">
+                  <h3 class="d-flex justify-content-center h-100 py-2 text-success">Login</h3>
+                  {% csrf_token %}
+                  <div class="input-group mb-2">
+
+                  <div class="input-group-append">
+                  <span class="input-group-text"><i class="fa fa-user"></i></span>
+                  </div>
+                  {{ form.username }}
+                  </div>
+                  <div class="input-group mb-2">
+                    <div class="input-group-append">
+                      <span class="input-group-text"><i class="fa fa-key"></i></span>
+                      </div>
+                        {{ form.password }}
+
+                      </div>
+                      <input type="submit" value="login" style="color:white" class="btn btn-outline-white bg-success my-2 my-sm-0" />
+                      <p><input type="hidden" name="next" value="{{ next }}"/></p>
+                      {% for message in messages %}
+                        <p class="text-info";>{{message|title}}</p>
+                      {% endfor %}
+                              {{ form.errors }}
+                        </form>
+                  <hr>
+                  Don't have an account?<a class="nav-link active btn btn bg-success" style="color:white" href="{% url 'main:register' %}">Sign Up</a>
+                  {# Assumes you setup the password_reset view in your URLconf #}
+                  <a class="" href="{% url 'password_reset' %}">Forgot password?</a>
+
+                  </div>
+                  </div>
+
+                  </div>
+                  <!--<div class="col shadow py-4 d-flex justify-content-center ml-3" id="loginpage">
+                  <h1 class="py-5 mt-5"><b style="color:red">WISEVIEW SERVICES</b></h1>
+                  -->
+                  </div>
+				  <hr>
+
+
+<script>
+
+  var form_fields = document.getElementsByTagName('input')
+  form_fields[2].placeholder='Username..';
+  form_fields[3].placeholder='Enter Password..';
+
+  for (var field in form_fields){
+      form_fields[field].className += ' form-control'
+  }
+
+  </script>
+
+  {% endblock %}
